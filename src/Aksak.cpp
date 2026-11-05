@@ -12,7 +12,7 @@ struct Aksak : Module {
 	enum OutputId { STEP_OUTPUT, ACCENT_OUTPUT, LONG_OUTPUT, END_OUTPUT, OUTPUTS_LEN };
 	enum LightId { ENUMS(GROUP_LIGHT, AKSAK_MAX_GROUPS * 2), LIGHTS_LEN };
 
-	zv::Aksak a;
+	zv::AksakClock a;
 	int custom[AKSAK_MAX_GROUPS] = {2, 2, 3, 0, 0, 0, 0, 0};   // 0 = off
 	int meter = 1;
 	dsp::SchmittTrigger clockTrig, resetTrig;
@@ -133,7 +133,7 @@ struct AksakDisplay : Widget {
 		int n = 3, g = 0, s = 0, meter = 1;
 		bool started = true;
 		if (module) {
-			const zv::Aksak& a = module->a;
+			const zv::AksakClock& a = module->a;
 			n = a.nCur;
 			for (int i = 0; i < n; i++) groups[i] = a.cur[i];
 			g = a.group; s = a.step; started = a.started;

@@ -72,7 +72,7 @@ static float rms(const std::vector<float>& v, size_t from) {
 }
 
 static void testEngineSound() {
-	Engine e;
+	ZvEngine e;
 	e.setSampleRate(48000.f);
 	e.dronePatched = true;
 	e.droneV = -1.f;          // C3
@@ -129,7 +129,7 @@ static void testEngineSound() {
 }
 
 static void testYelp() {
-	Engine e;
+	ZvEngine e;
 	e.setSampleRate(48000.f);
 	e.dronePatched = true;
 	e.inMelV[0] = 0.5f;
@@ -158,7 +158,7 @@ static void testYelp() {
 }
 
 static void testPolyAndChoir() {
-	Engine e;
+	ZvEngine e;
 	e.setSampleRate(44100.f);
 	e.channels = 4;
 	e.vs.ensemble = 1.f;
@@ -180,7 +180,7 @@ static void testPolyAndChoir() {
 	check(near(e.droneV, 1.5f, 1e-6f), "unpatched drone latches the first note");
 	std::printf("  full choir 4 ch mix peak %.2f V\n", peak);
 	// choir pulls towards tempered: peak at A4 is ~108 c, pulled halfway to 100
-	Engine f;
+	ZvEngine f;
 	f.dronePatched = true;
 	f.inMelV[0] = 0.75f;
 	f.inGate[0] = true;
@@ -193,7 +193,7 @@ static void testPolyAndChoir() {
 }
 
 static void testAksak() {
-	Aksak a;
+	AksakClock a;
 	a.setPreset(1);   // 2+2+3
 	std::string acc;
 	for (int i = 0; i < 14; i++) {

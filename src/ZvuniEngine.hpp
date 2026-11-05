@@ -254,7 +254,7 @@ struct Singer {
 // ---------------------------------------------------------------------------
 // A part: up to six singers on the same line.
 // ---------------------------------------------------------------------------
-struct Part {
+struct ZvPart {
 	Singer s[MAX_SINGERS];
 	int n = 1;
 	float pitchV = 0.f;        // target pitch, V/oct
@@ -422,8 +422,8 @@ struct TunerSettings {
 	float seekSpeed = 1.5f;  // Hz
 };
 
-struct Channel {
-	Part melody, partner;
+struct ZvChannel {
+	ZvPart melody, partner;
 	float melV = 0.f;           // after range + cling
 	float partnerCents = 0.f;   // signed, current
 	float seekPos = 0.f, seekVel = 0.f;
@@ -436,11 +436,11 @@ struct Channel {
 // ---------------------------------------------------------------------------
 // The whole module's engine
 // ---------------------------------------------------------------------------
-struct Engine {
+struct ZvEngine {
 	float sr = 48000.f;
 	int channels = 1;
-	Channel ch[MAX_CH];
-	Part drone;
+	ZvChannel ch[MAX_CH];
+	ZvPart drone;
 	TunerSettings ts;
 	VoiceSettings vs;
 	YelpSettings ys;
@@ -469,7 +469,7 @@ struct Engine {
 	// outputs
 	float outDrone = 0.f, outMel[MAX_CH] = {}, outPartner[MAX_CH] = {}, outL = 0.f, outR = 0.f;
 
-	Engine() {
+	ZvEngine() {
 		drone.init(11, 0.f);
 		drone.useTres = false;
 		drone.attack = 0.08f;
@@ -508,7 +508,7 @@ struct Engine {
 
 		// drift (shared slow wander)
 		for (int c = 0; c < channels; c++) {
-			Channel& C = ch[c];
+			ZvChannel& C = ch[c];
 			C.driftTime -= dt;
 			if (C.driftTime <= 0.f) { C.driftTgt = rng.bi(); C.driftTime = 0.4f + 0.6f * rng.uni(); }
 			C.driftState += (C.driftTgt - C.driftState) * std::min(1.f, dt / 0.3f);

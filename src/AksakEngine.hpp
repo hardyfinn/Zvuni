@@ -22,7 +22,7 @@ static const AksakPreset AKSAK_TABLE[7] = {
 	{"15: 2+2+2+2+3+2+2", 7, {2, 2, 2, 2, 3, 2, 2}},
 };
 
-struct Aksak {
+struct AksakClock {
 	int base[AKSAK_MAX_GROUPS] = {2, 2, 3};
 	int nBase = 3;
 	int cur[AKSAK_MAX_GROUPS] = {2, 2, 3};

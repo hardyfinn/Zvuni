@@ -56,7 +56,7 @@ struct Zvuni : Module {
 	};
 	enum LightId { RESOLVE_LIGHT, YELP_LIGHT, ACCENT_LIGHT, LIGHTS_LEN };
 
-	Engine e;
+	ZvEngine e;
 	dsp::SchmittTrigger yelpTrig;
 	dsp::PulseGenerator yelpFlash;
 	int seekIndex = 2;
@@ -181,7 +181,7 @@ struct Zvuni : Module {
 		for (int o : {MELODY_OUTPUT, PARTNER_OUTPUT, MEL_VOCT_OUTPUT, PTR_VOCT_OUTPUT, ROUGH_OUTPUT, INTERVAL_OUTPUT})
 			outputs[o].setChannels(chans);
 		for (int c = 0; c < chans; c++) {
-			Channel& C = e.ch[c];
+			ZvChannel& C = e.ch[c];
 			outputs[MELODY_OUTPUT].setVoltage(e.outMel[c], c);
 			outputs[PARTNER_OUTPUT].setVoltage(e.outPartner[c], c);
 			outputs[MEL_VOCT_OUTPUT].setVoltage(C.melV, c);
@@ -249,7 +249,7 @@ struct ZvuniDisplay : Widget {
 		bool yelp = false;
 		float droneV = -1.f;
 		if (module) {
-			Channel& C = module->e.ch[0];
+			ZvChannel& C = module->e.ch[0];
 			melV = C.melV;
 			cents = C.partnerCents;
 			peakRing = module->e.ts.ring;
