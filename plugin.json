@@ -1,0 +1,29 @@
+{
+  "slug": "Zvuni",
+  "name": "Zvuni",
+  "version": "2.0.0",
+  "license": "GPL-3.0-or-later",
+  "brand": "Haer",
+  "author": "Haer",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "https://github.com/hardyfinn/zvuni",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "Zvuni",
+      "name": "Zvuni",
+      "description": "Three-voice formant singer after Bulgarian women's singing: a drone, a melody, and a partner tuned to a target roughness so the microtonal second always rings",
+      "tags": ["Oscillator", "Synth voice", "Polyphonic", "Quantizer"]
+    },
+    {
+      "slug": "Aksak",
+      "name": "Aksak",
+      "description": "Clock divider for Bulgarian limping meters (2+2+3, 2+2+2+3, 2+2+3+2+2...) with custom groups and mutation",
+      "tags": ["Clock modulator", "Sequencer"]
+    }
+  ]
+}
