@@ -185,7 +185,7 @@ struct Glottal {
 	float process(float dp, float open) {
 		open = clampf(open, 0.f, 1.f);
 		float oq = 0.72f - 0.30f * open;
-		float tn = oq * (0.40f - 0.25f * open);
+		float tn = oq * (0.38f - 0.30f * open);
 		float tp = oq - tn;
 		float p = phase;
 		float y;
@@ -266,7 +266,7 @@ struct ZvPart {
 	float attack = 0.02f, release = 0.15f;
 	bool useTres = true;
 	float basePan = 0.f;
-	Biquad notch, peak;
+	Biquad notch, peak, presence;
 	float level = 1.f;
 	Rng rng;
 
@@ -352,7 +352,7 @@ struct ZvPart {
 			for (int k = 0; k < 3; k++) {
 				float ff = fm[k].f * (k == 0 ? 1.f + 0.12f * open : 1.f);
 				float bw = fm[k].bw * (1.f - 0.3f * open);
-				float a = fm[k].a * (k == 1 ? 1.f + 1.5f * open : k == 2 ? 1.f + 4.f * open : 1.f);
+				float a = fm[k].a * (k == 1 ? 1.f + 2.f * open : k == 2 ? 1.f + 10.f * open : 1.f);
 				// keep the formant above the fundamental, as singers do
 				if (k == 0) ff = std::max(ff, f * 1.05f);
 				g.bp[k].bandpass(ff, bw, sr);
@@ -363,6 +363,8 @@ struct ZvPart {
 
 		notch.notch(1000.f, 1.4f, sr);
 		peak.peaking(2500.f, 2.5f, 9.f * vs.nasal, sr);
+		// open throat: the bright, forward 'ring' around 3 kHz
+		presence.peaking(3200.f, 1.0f, 14.f * clampf(vs.open + yelpOpen, 0.f, 1.f), sr);
 	}
 
 	// one audio sample. Returns mono; adds a stereo pair into L/R.
@@ -390,6 +392,7 @@ struct ZvPart {
 		float nz = notch.process(sum);
 		sum = sum + vs.nasal * 0.7f * (nz - sum);
 		sum = peak.process(sum);
+		sum = presence.process(sum);
 		float k = norm * yelpAmp * level;
 		L += sl * k;
 		R += sr_ * k;
