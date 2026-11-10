@@ -357,68 +357,68 @@ struct ZvuniWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
 		ZvuniDisplay* d = createWidget<ZvuniDisplay>(mm2px(Vec(6.0, 12.0)));
-		d->box.size = mm2px(Vec(150.56, 25.0));
+		d->box.size = mm2px(Vec(191.2, 25.0));
 		d->module = module;
 		addChild(d);
 
-		const float kA = 52.5f, cvA = 65.5f, kB = 78.5f, cvB = 90.0f, kC = 101.0f;
+		const float kA = 52.5f, cvA = 65.5f, kB = 80.0f, cvB = 91.5f, kC = 103.0f;
 		auto knob = [&](float x, float y, int p) { addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(x, y)), module, p)); };
 		auto small = [&](float x, float y, int p) { addParam(createParamCentered<RoundSmallBlackKnob>(mm2px(Vec(x, y)), module, p)); };
 		auto in = [&](float x, float y, int i) { addInput(createInputCentered<PJ301MPort>(mm2px(Vec(x, y)), module, i)); };
 		auto out = [&](float x, float y, int o) { addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(x, y)), module, o)); };
 
 		// partner
-		addParam(createParamCentered<RoundLargeBlackKnob>(mm2px(Vec(19.f, 53.0f)), module, Zvuni::TENSION_PARAM));
-		knob(43, kA, Zvuni::RING_PARAM);
-		in(11, cvA, Zvuni::TENSION_INPUT);
-		addParam(createParamCentered<Trimpot>(mm2px(Vec(27, cvA)), module, Zvuni::TENSION_ATT_PARAM));
-		in(43, cvA, Zvuni::RING_INPUT);
-		knob(11, kB, Zvuni::DRIFT_PARAM);
-		knob(27, kB, Zvuni::CLING_PARAM);
-		knob(43, kB, Zvuni::RANGE_PARAM);
-		in(11, cvB, Zvuni::DRIFT_INPUT);
-		addParam(createParamCentered<CKSSThree>(mm2px(Vec(11, kC)), module, Zvuni::MODE_PARAM));
-		addParam(createParamCentered<CKSS>(mm2px(Vec(22, kC)), module, Zvuni::SIDE_PARAM));
-		in(33, kC, Zvuni::FLIP_INPUT);
-		in(44, kC, Zvuni::ACCENT_INPUT);
-		addChild(createLightCentered<SmallLight<YellowLight>>(mm2px(Vec(48.6f, kC - 4.2f)), module, Zvuni::ACCENT_LIGHT));
+		addParam(createParamCentered<RoundLargeBlackKnob>(mm2px(Vec(15.6f, 53.0f)), module, Zvuni::TENSION_PARAM));
+		knob(55.6, kA, Zvuni::RING_PARAM);
+		in(15.6, cvA, Zvuni::TENSION_INPUT);
+		addParam(createParamCentered<Trimpot>(mm2px(Vec(35.6f, cvA)), module, Zvuni::TENSION_ATT_PARAM));
+		in(55.6, cvA, Zvuni::RING_INPUT);
+		knob(15.6, kB, Zvuni::DRIFT_PARAM);
+		knob(35.6, kB, Zvuni::CLING_PARAM);
+		knob(55.6, kB, Zvuni::RANGE_PARAM);
+		in(15.6, cvB, Zvuni::DRIFT_INPUT);
+		addParam(createParamCentered<CKSSThree>(mm2px(Vec(15.6f, kC)), module, Zvuni::MODE_PARAM));
+		addParam(createParamCentered<CKSS>(mm2px(Vec(29.35f, kC)), module, Zvuni::SIDE_PARAM));
+		in(43.1, kC, Zvuni::FLIP_INPUT);
+		in(56.85, kC, Zvuni::ACCENT_INPUT);
+		addChild(createLightCentered<SmallLight<YellowLight>>(mm2px(Vec(56.85f + 4.6f, kC - 4.2f)), module, Zvuni::ACCENT_LIGHT));
 
 		// voice
-		knob(64, kA, Zvuni::VOWEL_PARAM);
-		knob(80, kA, Zvuni::OPEN_PARAM);
-		knob(96, kA, Zvuni::TRES_PARAM);
-		in(64, cvA, Zvuni::VOWEL_INPUT);
-		in(80, cvA, Zvuni::OPEN_INPUT);
-		in(96, cvA, Zvuni::TRES_INPUT);
-		knob(64, kB, Zvuni::ENS_PARAM);
-		knob(80, kB, Zvuni::NASAL_PARAM);
-		knob(96, kB, Zvuni::BREATH_PARAM);
-		in(64, cvB, Zvuni::ENS_INPUT);
-		small(64, kC, Zvuni::DRONE_LVL_PARAM);
-		small(80, kC, Zvuni::PARTNER_LVL_PARAM);
-		in(96, kC, Zvuni::PARTNER_ON_INPUT);
+		knob(81.6, kA, Zvuni::VOWEL_PARAM);
+		knob(101.6, kA, Zvuni::OPEN_PARAM);
+		knob(121.6, kA, Zvuni::TRES_PARAM);
+		in(81.6, cvA, Zvuni::VOWEL_INPUT);
+		in(101.6, cvA, Zvuni::OPEN_INPUT);
+		in(121.6, cvA, Zvuni::TRES_INPUT);
+		knob(81.6, kB, Zvuni::ENS_PARAM);
+		knob(101.6, kB, Zvuni::NASAL_PARAM);
+		knob(121.6, kB, Zvuni::BREATH_PARAM);
+		in(81.6, cvB, Zvuni::ENS_INPUT);
+		small(81.6, kC, Zvuni::DRONE_LVL_PARAM);
+		small(101.6, kC, Zvuni::PARTNER_LVL_PARAM);
+		in(121.6, kC, Zvuni::PARTNER_ON_INPUT);
 
 		// phrase
-		knob(117, kA, Zvuni::HEIGHT_PARAM);
-		knob(133, kA, Zvuni::SNAP_PARAM);
-		knob(149, kA, Zvuni::HOLD_PARAM);
-		in(117, cvA, Zvuni::YELP_INPUT);
-		addChild(createLightCentered<SmallLight<RedLight>>(mm2px(Vec(121.6f, cvA - 4.2f)), module, Zvuni::YELP_LIGHT));
-		addParam(createParamCentered<CKSS>(mm2px(Vec(133, cvA)), module, Zvuni::AUTO_PARAM));
-		addParam(createParamCentered<CKSS>(mm2px(Vec(149, cvA)), module, Zvuni::BOTH_PARAM));
-		knob(117, kB, Zvuni::GLIDE_PARAM);
-		addParam(createParamCentered<CKSSThree>(mm2px(Vec(133, kB)), module, Zvuni::TO_PARAM));
-		in(149, kB, Zvuni::RESOLVE_INPUT);
-		addChild(createLightCentered<SmallLight<RedLight>>(mm2px(Vec(153.6f, kB - 4.2f)), module, Zvuni::RESOLVE_LIGHT));
+		knob(147.6, kA, Zvuni::HEIGHT_PARAM);
+		knob(167.6, kA, Zvuni::SNAP_PARAM);
+		knob(187.6, kA, Zvuni::HOLD_PARAM);
+		in(147.6, cvA, Zvuni::YELP_INPUT);
+		addChild(createLightCentered<SmallLight<RedLight>>(mm2px(Vec(147.6f + 4.6f, cvA - 4.2f)), module, Zvuni::YELP_LIGHT));
+		addParam(createParamCentered<CKSS>(mm2px(Vec(167.6f, cvA)), module, Zvuni::AUTO_PARAM));
+		addParam(createParamCentered<CKSS>(mm2px(Vec(187.6f, cvA)), module, Zvuni::BOTH_PARAM));
+		knob(147.6, kB, Zvuni::GLIDE_PARAM);
+		addParam(createParamCentered<CKSSThree>(mm2px(Vec(167.6f, kB)), module, Zvuni::TO_PARAM));
+		in(187.6, kB, Zvuni::RESOLVE_INPUT);
+		addChild(createLightCentered<SmallLight<RedLight>>(mm2px(Vec(187.6f + 4.6f, kB - 4.2f)), module, Zvuni::RESOLVE_LIGHT));
 
 		// bottom row
-		const float jy = 117.6f;
-		in(11, jy, Zvuni::DRONE_INPUT);
-		in(24, jy, Zvuni::MELODY_INPUT);
-		in(37, jy, Zvuni::GATE_INPUT);
+		const float jy = 118.4f;
+		in(12, jy, Zvuni::DRONE_INPUT);
+		in(26.5, jy, Zvuni::MELODY_INPUT);
+		in(41, jy, Zvuni::GATE_INPUT);
 		const int outs[9] = {Zvuni::DRONE_OUTPUT, Zvuni::MELODY_OUTPUT, Zvuni::PARTNER_OUTPUT, Zvuni::MIX_L_OUTPUT, Zvuni::MIX_R_OUTPUT,
 			Zvuni::MEL_VOCT_OUTPUT, Zvuni::PTR_VOCT_OUTPUT, Zvuni::ROUGH_OUTPUT, Zvuni::INTERVAL_OUTPUT};
-		for (int i = 0; i < 9; i++) out(56 + 12 * i, jy, outs[i]);
+		for (int i = 0; i < 9; i++) out(59 + 16.4f * i, jy, outs[i]);
 	}
 
 	void appendContextMenu(Menu* menu) override {
