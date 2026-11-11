@@ -209,10 +209,10 @@ struct AksakWidget : ModuleWidget {
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(14, 92.3)), module, Aksak::CLOCK_INPUT));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(37, 92.3)), module, Aksak::RESET_INPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(14, 107.4)), module, Aksak::STEP_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(37, 107.4)), module, Aksak::ACCENT_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(14, 118.6)), module, Aksak::LONG_OUTPUT));
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(37, 118.6)), module, Aksak::END_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(14, 105.4)), module, Aksak::STEP_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(37, 105.4)), module, Aksak::ACCENT_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(14, 119.0)), module, Aksak::LONG_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(37, 119.0)), module, Aksak::END_OUTPUT));
 	}
 };
 
