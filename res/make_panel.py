@@ -195,3 +195,10 @@ a.rect(3.5, 97.0, 43.8, 26.6, OUTBOX)
 for x, y, n in ((14, 100.9, "STEP"), (37, 100.9, "ACCENT"), (14, 114.1, "LONG"), (37, 114.1, "END")):
     a.add(text(n, x, y, 2.9, FONT_BOLD, OUTINK, spacing=0.05))
 a.save("Aksak.svg")
+
+# --- Haer maker logo (res/haer_logo.py), placed clear of the jacks and rail artwork
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import haer_logo
+haer_logo.add_to_file(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "Aksak.svg"), x=25.64, y=126.0, cap=3.0, bg='#F4F1EA', knock=(125.15, 127.05))
+haer_logo.add_to_file(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "Zvuni.svg"), x=40.89, y=126.0, cap=3.0, bg='#F4F1EA', knock=(125.15, 127.05))
