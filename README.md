@@ -132,3 +132,7 @@ The engines (`src/ZvuniEngine.hpp`, `src/AksakEngine.hpp`) have no VCV code in t
 ## Notes
 
 The roughness model is the standard critical-band approximation, not a measurement of any particular singer. The interval figures for Bulgarian singing are ballpark values from the ethnomusicology literature.
+
+## Licence
+
+MIT (see `LICENSE.txt`): you're free to use, change, port (VST/CLAP, other platforms, hardware) and share this code, as long as the copyright notice and licence text come along. Fonts on the panel (Inter, Climate Crisis) are under the SIL Open Font Licence.
