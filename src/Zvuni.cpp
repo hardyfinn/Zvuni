@@ -78,8 +78,8 @@ struct Zvuni : Module {
 		configParam(ENS_PARAM, 0.f, 1.f, 0.f, "Ensemble: village (1 singer) > choir (6 singers)", "%", 0.f, 100.f);
 		configParam(NASAL_PARAM, 0.f, 1.f, 0.2f, "Nasal", "%", 0.f, 100.f);
 		configParam(BREATH_PARAM, 0.f, 1.f, 0.1f, "Breath", "%", 0.f, 100.f);
-		configParam(DRONE_LVL_PARAM, 0.f, 1.f, 0.8f, "Drone level", "%", 0.f, 100.f);
-		configParam(PARTNER_LVL_PARAM, 0.f, 1.f, 0.8f, "Partner level", "%", 0.f, 100.f);
+		configParam(DRONE_LVL_PARAM, 0.f, 1.f, 0.8f, "Drone level", "%", 0.f, 100.f)->randomizeEnabled = false;
+		configParam(PARTNER_LVL_PARAM, 0.f, 1.f, 0.8f, "Partner level", "%", 0.f, 100.f)->randomizeEnabled = false;
 		configParam(HEIGHT_PARAM, 3.f, 12.f, 7.f, "Yelp height", " semitones");
 		configParam(SNAP_PARAM, 0.f, 1.f, 0.4f, "Yelp snap (how fast it flips)", " ms", 7.5f, 20.f);
 		configParam(HOLD_PARAM, 0.f, 1.f, 0.46f, "Auto yelp after notes held at least", " s", 20.f, 0.1f);
